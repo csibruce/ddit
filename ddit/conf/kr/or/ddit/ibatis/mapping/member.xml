@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="member">
+
+	<typeAlias alias="memberVo" type="vo.MemberVO"/>
+	<sql id="selectAll">
+		SELECT *
+    	  FROM MEMBER
+	</sql>
+	
+
+	<!-- Map<String, String> params = new HashMa<String, String>();
+	     params.put("mem_id", "a001");
+	     params.put("mem_pass", "asdfasdf")
+	-->
+    <select id="memberInfo" parameterClass="map" resultClass="memberVo">
+    	<include refid="selectAll"/>
+    	 WHERE MEM_ID = #mem_id#
+    	   AND MEM_PASS = #mem_pass#
+    </select>	
+    
+    <select id="memberList" resultClass="memberVo">
+    	<include refid="selectAll"/>
+    </select>
+    
+    
+    <insert id="insertMemberInfo" parameterClass="memberVo" >
+    	INSERT INTO MEMBER(
+    				 MEM_ID
+    				,MEM_PASS
+    				,MEM_NAME
+    				,MEM_REGNO1
+    				,MEM_REGNO2
+    				,MEM_BIR
+    				,MEM_ZIP
+    				,MEM_ADD1
+    				,MEM_ADD2
+    				,MEM_HOMETEL
+    				,MEM_COMTEL
+    				,MEM_HP
+    				,MEM_MAIL)
+    		VALUES(
+    			    #mem_id#
+    			  , #mem_pass#
+    			  , #mem_name#
+    			  , #mem_regno1#
+    			  , #mem_regno2#
+    			  , #mem_bir#
+    			  , #mem_zip#
+    			  , #mem_add1#
+    			  , #mem_add2#
+    			  , #mem_hometel#
+    			  , #mem_comtel#
+    			  , #mem_hp#
+    			  , #mem_mail#
+    		)
+    		
+    	<selectKey resultClass="string">
+    		SELECT MEM_ID
+    		FROM MEMBER
+    		WHERE MEM_ID = #mem_id#
+    	</selectKey>
+    </insert>
+    
+
+    
+    
+    
+</sqlMap>

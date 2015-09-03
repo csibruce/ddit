@@ -1,0 +1,176 @@
+@CHARSET "UTF-8";
+/* Common */
+body,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textarea,button,select{margin:0;padding:0}
+body,input,textarea,select,button,table{font-family:'돋움',Dotum,AppleGothic,sans-serif;font-size:12px}
+img,fieldset{border:0}
+ul,ol{list-style:none}
+em,address{font-style:normal}
+a{text-decoration:none}
+a:hover,a:active,a:focus{text-decoration:underline}
+/* Layout */
+#wrap{width:800px; margin-top: 50px;}
+#header{width:800px; text-align: right;}
+#container{width:800px;}
+#container:after{display:block;clear:both;content:''}
+#content{float:right;width:600px; height: 500px; background-color: white; margin-top: 10px;}
+#footer{width:800px}
+.left{float:left;width:200px; height: 300px; background-color: darkgray; margin-top: 10px;}
+.left .leftmenu li {position:relative; list-style:none; text-align:left; width:100px; padding-bottom:5px; margin-top: 10px; background: orange; font-family:'돋움',Dotum,AppleGothic,sans-serif;font-size:12px;}
+.left .leftmenu li div { display:none;}
+.left .leftmenu li:hover div {display:block; position:absolute; left:100px; top:-1px; width:100px; border:1px solid #bbb; text-align:left; padding:5px;}
+.left .leftmenu .submenu a:hover {color:#f00;}
+.left .leftmenu .step1:hover {background:#ddd;}
+#footer{overflow:hidden;clear:both;margin:0;padding:22px 0 30px;border-top:2px solid #8a8a8a;color:#333;font-family:'나눔고딕',NanumGothic,'돋움',Dotum,AppleGothic,Sans-serif;text-align:center}
+#footer a{color:#444;text-decoration:none}
+#footer a:visited{color:#666;text-decoration:none}
+#footer a:hover{text-decoration:underline}
+#footer ul{margin:0 0 10px}
+#footer ul li{display:inline;position:relative;padding:0 5px 0 7px;background:url(http://static.naver.com/common/footer/bu_bar.gif) 0 50% no-repeat;_background-position:0 10%;font-size:12px;white-space:nowrap}
+#footer ul li a:hover,#footer ul li a:hover strong{color:#438a01}
+#footer ul li.first{padding:0 3px 0 0;background:none}
+#footer address{font-family:verdana;font-size:9px;line-height:14px}
+#footer address img{vertical-align:middle}
+#footer address a{color:#444;font-family:tahoma;font-size:9px;font-weight:bold}
+#footer address a:hover{color:#009bc8}
+#footer address span{padding-left:2px}
+#footer address em{padding-left:6px}
+#footer address .logo{display:inline-block;*display:inline;vertical-align:top;*vertical-align:baseline}
+/* You must delete below style */
+#wrap{background: white;}
+#header div{border:1px solid #ddd;}
+#container #content{background: white;}
+#footer{background:#fff}
+
+
+/* MENU UI Object */
+/* 백그라운드이미지 간격없음 */
+.tab_menu {
+	display:inline-block; 
+	background:
+		url(../image/sajin.jpg)
+		repeat-x 0 100%
+}
+
+.tab_menu li {
+	_display: inline;
+	float: left;
+	margin-right: 0px;
+	background:
+		url(http://html.nhndesign.com/guidelines/uio/img/menu/bg_tab_right.gif)
+		100% 0 no-repeat
+}
+
+.tab_menu li span {
+	display: block
+}
+
+.tab_menu li a {
+	display: block;
+	_float: left;
+	height: 19px;
+	padding: 9px 19px 0 18px;
+	background:
+		url(http://html.nhndesign.com/guidelines/uio/img/menu/bg_tab_left.gif)
+		0 0 no-repeat;
+	color: #666;
+	line-height: 14px;
+	text-decoration: none
+}
+
+.tab_menu li a:hover {
+	color: red;
+}
+
+.tab_menu li.selected {
+	background-position: 100% -28px
+}
+
+.tab_menu li.selected a {
+	background-position: 0 -28px;
+	color: #333;
+	font-weight: bold;
+	letter-spacing: -1px
+}
+/* //MENU UI Object */
+
+/* loing box */
+#login h3 img {margin-top: 50px;}
+#login .loginbox {height:90px; margin-top:10px; position:relative; padding:10px 30px 24px 19px; margin-bottom:10px;}
+#login .loginbox input {width:163px;}
+#login .loginbox .id {position:absolute; left:100px; top:27px;}
+#login .loginbox .id #mem_id {position:absolute; top: 3px; }
+#login .loginbox .pass {position:absolute; left:100px; top:55px;}
+#login .loginbox .pass #mem_pass {position:absolute; top: 3px; }
+#login .loginbox .btn {position:absolute; left:370px; top:27px;}
+#login .loginbox .other {position:absolute; left:225px; top:91px; width:250px;}
+
+/* loing box */
+#login-box { color: #ebebeb; font: 12px Arial, Helvetica, sans-serif; background: url(../images/login-box-backg.png) no-repeat left top;}
+#login-box-name {float: left; display:inline; width:50px; text-align: right; padding: 10px 10px 0 0; margin:0 0 7px 10px;} 
+#login-box-field {display:inline; width:50px; margin:0 auto; margin:0 0 7px 0;} 
+.form-login {border: 1px solid #a71000; background-color:#fff; font-size: 14px; color: #000;} 
+.login-box-options { clear:both; padding-left:87px; font-size: 11px;} 
+.login-box-options a { color: #ebebeb; font-size: 11px;}
+.btn { margin: 5px;}
+#login-box p{margin-top: 10px;}
+/* // login-box */
+
+/* UI Object */
+.tbl_type{margin-left:7px;}
+.tbl_type,.tbl_type th,.tbl_type td{border:0}
+.tbl_type{width:592px;border-bottom:2px solid #dcdcdc;font-family:Tahoma;font-size:11px;text-align:center}
+.tbl_type caption{display:none}
+.tbl_type th{padding:7px 0 4px;border-top:2px solid #dcdcdc;background-color:#f5f7f9;color:#666;font-family:'돋움',dotum;font-size:11px;font-weight:bold}
+.tbl_type td{padding:6px 0 4px;border-top:1px solid #e5e5e5;color:#4c4c4c}
+/* //UI Object */
+
+/* form UI Object */
+.form_table{margin-left: 7px; font-size:12px;font-family:Tahoma, Geneva, sans-serif}
+.form_table input,
+.form_table textarea,
+.form_table select,
+.form_table table,
+.form_table button{font-size:12px}
+.form_table table{width:100%;border:0;border-top:2px solid #999}
+.form_table caption{padding:8px 0;font-weight:bold;text-align:left}
+.form_table th,
+.form_table td{padding:8px;border:0;vertical-align:top}
+.form_table th{color:#333}
+.form_table td{color:#666}
+.form_table thead th{border-bottom:1px solid #ccc;background:#f8f8f8}
+.form_table tbody th{border-bottom:1px solid #ddd;background:#fafafa;text-align:left}
+.form_table tfoot th{border-bottom:1px solid #ddd}
+.form_table tbody td{border-bottom:1px solid #ddd}
+.form_table tfoot td{border-bottom:1px solid #ddd;font-weight:bold;color:#333}
+.form_table .item {position:relative;margin:-4px 0}
+.form_table .item .i_help{position:absolute;top:4px;right:0}
+.form_table .item .i_label{ top:6px; left:10px}
+.form_table .item .i_dsc{margin:2px 0}
+.form_table .item .i_check,
+.form_table .item .i_radio{width:13px;height:13px;margin:2px 5px 2px 0;padding:0;vertical-align:middle}
+.form_table .item .i_text{float:left; position:relative;margin:2px;padding:3px 4px;border:1px solid #b7b7b7;border-right-color:#e1e1e1;border-bottom-color:#e1e1e1;background:transparent;}
+.form_table .item .i_file{float:left; position:relative;margin:2px;padding:3px 4px;border:1px solid #b7b7b7;border-right-color:#e1e1e1;border-bottom-color:#e1e1e1;background:transparent;}
+.form_table .item .hide{visibility:hidden;position:absolute;top:0;left:0;width:1px;height:1px;font-size:0;line-height:0}
+.form_table .item select{margin:2px}
+.form_table .item label{float: left; margin:0 10px 0 0; margin-top: 5px;}
+.button_set{float:right; margin-top: 10px; padding: 10px;}
+/* // form UI Object */
+
+/* 아이디/비번찾기 */
+#find .title { margin-bottom:40px; }
+#find .title img {width: 100%;}
+#find .idpass {clear:both; overflow:hidden;}
+#find .idpass h3 {float:left; display:inline;}
+#find .idpass .id {float:right; width:470px; position:relative; border:7px #efefef solid; text-align: left; padding-left: 20px; height: 70px;}
+#find .idpass .id .name {height:30px; overflow:hidden;}
+#find .idpass .id .name input {width:217px; margin-left: 5px;}
+#find .idpass .id .rrn input {width:97px; margin-left: 5px;}
+#find .idpass .id .btn {position:absolute; left:381px; top: 5px;}
+
+#find .idpass .pass {float:right; width:470px; position:relative; border:7px #efefef solid; margin-top: 10px;  text-align: left; padding-left: 20px; height: 100px;}
+#find .idpass .pass .name {height: 30px; overflow:hidden;}
+#find .idpass .pass .name input {width:217px; margin-left: 10px;}
+#find .idpass .pass .email input {width:217px; margin-left: 5px;}
+#find .idpass .pass .rrn input {width:97px; margin-left: 5px;}
+#find .idpass .pass .btn {position:absolute; left:381px; top:20px;}
+
