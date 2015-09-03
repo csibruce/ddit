@@ -1,0 +1,12 @@
+iBatis 설정
+1. 요구되는 라이브러리 import
+	ibatis-2.3.4.726
+	ojdbc6
+	log4j
+2. log4j설정
+	ClassPath root에 log4j.properties 파일작성및 설성
+	
+3. iBatis 설정
+	xml 형식의 설정파일 작성 :  SqlMapConfig.xml
+	
+4. iBatis 설정 파일을 기초로 SqlMapclient 객체를 생성하는 자바코드
