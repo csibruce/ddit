@@ -17,8 +17,14 @@
 	-->
     <select id="memberInfo" parameterClass="map" resultClass="memberVo">
     	<include refid="selectAll"/>
-    	 WHERE MEM_ID = #mem_id#
-    	   AND MEM_PASS = #mem_pass#
+    	<dynamic prepend="WHERE">
+    		<isNotEmpty property="mem_id">
+    	 		MEM_ID = #mem_id#    			
+    		</isNotEmpty>
+    		<isNotEmpty property="mem_pass" open="AND">
+    	    	MEM_PASS = #mem_pass#    		
+    		</isNotEmpty>
+    	</dynamic>
     </select>	
     
     <select id="memberList" resultClass="memberVo">

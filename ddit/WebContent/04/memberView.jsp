@@ -1,5 +1,19 @@
+<%@page import="vo.MemberVO"%>
+<%@page import="service.IMemberServiceImpl"%>
+<%@page import="service.IMemberService"%>
+<%@page import="java.util.Map"%>
+<%@page import="java.util.HashMap"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%
+    	String mem_id = request.getParameter("mem_id");
+    
+    	Map<String, String> params = new HashMap<String, String>();
+    	params.put("mem_id", mem_id);
+    	
+    	IMemberService service = IMemberServiceImpl.getInstance();
+    	MemberVO memberInfo = service.getMemberInfo(params);
+    %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -34,15 +48,15 @@ td {text-align: left; }
 	<tr>
 		<td class="fieldName" width="100px" height="25">성 명</td>
 		<td>
-			<input type="text" name="mem_name" value="" disabled="disabled"/>
+			<input type="text" name="mem_name" value="<%=memberInfo.getMem_name() %>" disabled="disabled"/>
 		</td>
 	</tr>
 	<tr><td class="tLine" colspan="2"></td></tr>
 	<tr>
 		<td class="fieldName" width="100px" height="25">주민등록번호</td>
 		<td>
-			<input type="text" name="mem_regno1" size="6" value="" disabled="disabled"/>
-  			<input type="text" name="mem_regno2" size="7" value="" disabled="disabled"/>
+			<input type="text" name="mem_regno1" size="6" value="<%=memberInfo.getMem_regno1() %>" disabled="disabled"/>
+  			<input type="text" name="mem_regno2" size="7" value="<%=memberInfo.getMem_regno2() %>" disabled="disabled"/>
 		</td>
 	</tr>
 	<tr><td class="tLine" colspan="2"></td></tr>
@@ -50,10 +64,11 @@ td {text-align: left; }
 	<tr>
 		<td class="fieldName" width="100px" height="25">생년월일</td>
 		<td>
+		
 				<input type="hidden" name="mem_bir" />
-				<input type="text" name="mem_bir1" size="4" value="" disabled="disabled"/>년
-				<input type="text" name="mem_bir2" size="2" value="" disabled="disabled"/>월
-				<input type="text" name="mem_bir3" size="2" value="" disabled="disabled"/>일
+				<input type="text" name="mem_bir1" size="4" value="<%=memberInfo.getMem_bir() != null ? memberInfo.getMem_bir().substring(0, 4) : "" %>" disabled="disabled"/>년
+				<input type="text" name="mem_bir2" size="2" value="<%=memberInfo.getMem_bir() != null ? memberInfo.getMem_bir().substring(5, 7) : "" %>" disabled="disabled"/>월
+				<input type="text" name="mem_bir3" size="2" value="<%=memberInfo.getMem_bir() != null ? memberInfo.getMem_bir().substring(8, 10) : "" %>" disabled="disabled"/>일
 		</td>
 	</tr>
 	<tr><td class="tLine" colspan="2"></td></tr>
@@ -61,7 +76,7 @@ td {text-align: left; }
 	<tr>
 		<td class="fieldName" width="100px" height="25">아이디</td>
 		<td>
-			<input type="text" name="mem_id" value="" disabled="disabled">
+			<input type="text" name="mem_id" value="<%=memberInfo.getMem_id() %>" disabled="disabled">
 		</td>
 	</tr>
 	<tr><td class="tLine" colspan="2"></td></tr>
@@ -69,7 +84,7 @@ td {text-align: left; }
 	<tr>
 		<td class="fieldName" width="100px" height="25">비밀번호</td>
 		<td>
-			<input type="password" name="mem_pass" value="" disabled="disabled"/> 8 ~ 20 자리 영문자 및 숫자 사용
+			<input type="password" name="mem_pass" value="<%=memberInfo.getMem_pass() %>" disabled="disabled"/> 8 ~ 20 자리 영문자 및 숫자 사용
 		</td>
 	</tr>
 	<tr><td class="tLine" colspan="2"></td></tr>
@@ -80,25 +95,30 @@ td {text-align: left; }
 		<td>
 			<div>
 			<input type="hidden" name="mem_hometel"/>
+			<%
+				String mem_hometel1 = memberInfo.getMem_hometel().substring(0, 3);
+				String[] mem_hometel = memberInfo.getMem_hometel().split("-");
+				
+			%>
 			<select name="mem_hometel1">
-				<option value="02">02</option>
-				<option value="031">031</option>
-				<option value="032">032</option>								        	
-				<option value="033">033</option>				        	
-				<option value="041">041</option>
-				<option value="042">042</option>				        	
-				<option value="043">043</option>				        	
-				<option value="051">051</option>				        	
-				<option value="052">052</option>
-				<option value="053">053</option>				        					        	
-				<option value="061">061</option>
-				<option value="062">062</option>
-				<option value="063">063</option>				        					        					        	
-				<option value="064">064</option>				        					        					        	
-				<option value="070">070</option>				        					        					        	
+				<option value="02" <%=mem_hometel[0].equals("02")?"selected":"" %>>02</option>
+				<option value="031" <%=mem_hometel[0].equals("031")?"selected":"" %>>031</option>
+				<option value="032" <%=mem_hometel[0].equals("032")?"selected":"" %>>032</option>								        	
+				<option value="033" <%=mem_hometel[0].equals("033")?"selected":"" %>>033</option>				        	
+				<option value="041" <%=mem_hometel[0].equals("041")?"selected":"" %>>041</option>
+				<option value="042" <%=mem_hometel[0].equals("042")?"selected":"" %>>042</option>				        	
+				<option value="043" <%=mem_hometel[0].equals("043")?"selected":"" %>>043</option>				        	
+				<option value="051" <%=mem_hometel[0].equals("051")?"selected":"" %>>051</option>				        	
+				<option value="052" <%=mem_hometel[0].equals("052")?"selected":"" %>>052</option>
+				<option value="053" <%=mem_hometel[0].equals("053")?"selected":"" %>>053</option>				        					        	
+				<option value="061" <%=mem_hometel[0].equals("061")?"selected":"" %>>061</option>
+				<option value="062" <%=mem_hometel[0].equals("062")?"selected":"" %>>062</option>
+				<option value="063" <%=mem_hometel[0].equals("063")?"selected":"" %>>063</option>				        					        					        	
+				<option value="064" <%=mem_hometel[0].equals("064")?"selected":"" %>>064</option>				        					        					        	
+				<option value="070" <%=mem_hometel[0].equals("070")?"selected":"" %>>070</option>				        					        					        	
 			</select>	- 	
-			<input type="text" name="mem_hometel2" size="4" value="" /> - 
-			<input type="text" name="mem_hometel3" size="4" value="" />
+			<input type="text" name="mem_hometel2" size="4" value="<%=mem_hometel[1] %>" /> - 
+			<input type="text" name="mem_hometel3" size="4" value="<%=mem_hometel[2] %>" />
 			</div>
 		</td>
 	</tr>

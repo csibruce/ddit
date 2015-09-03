@@ -46,7 +46,7 @@
 		<tr>
 			<th><%=((MemberVO)memberList.get(i)).getMem_id() %></th>
 			<th><%=((MemberVO)memberList.get(i)).getMem_pass() %></th>
-			<th><%=((MemberVO)memberList.get(i)).getMem_name() %></th>
+			<th><a href="javascript:location.href='/ddit/04/memberView.jsp?mem_id=<%=((MemberVO)memberList.get(i)).getMem_id()%>'"><%=((MemberVO)memberList.get(i)).getMem_name() %></a></th>
 			<th><%=((MemberVO)memberList.get(i)).getMem_regno1() %></th>
 			<th><%=((MemberVO)memberList.get(i)).getMem_regno2() %></th>
 		</tr>
