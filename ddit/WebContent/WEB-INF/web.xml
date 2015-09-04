@@ -18,7 +18,6 @@
 		<description>해당 선언 또는 설정의 정의</description>
 		<url-pattern>/02/*</url-pattern>
 		<include-prelude>/02/commonHeader.jspf</include-prelude>
-		<!--include-coda>/02/commonFooter.jspf</include-coda-->  	
   	</jsp-property-group>
   </jsp-config>
   

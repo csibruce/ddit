@@ -125,6 +125,7 @@ a:hover,a:active,a:focus{text-decoration:underline}
 /* //UI Object */
 
 /* form UI Object */
+
 .form_table{margin-left: 7px; font-size:12px;font-family:Tahoma, Geneva, sans-serif}
 .form_table input,
 .form_table textarea,

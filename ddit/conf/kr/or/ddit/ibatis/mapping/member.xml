@@ -70,7 +70,24 @@
     	</selectKey>
     </insert>
     
-
+	<update id="updateMemberInfo" parameterClass="memberVo">
+		UPDATE MEMBER
+		SET	    
+				MEM_HOMETEL = #mem_hometel#
+			   ,MEM_HP 	   = #mem_hp#
+			   ,MEM_MAIL   = #mem_mail#
+			   ,MEM_ZIP    = #mem_zip#
+			   ,MEM_ADD1   = #mem_add1#
+			   ,MEM_ADD2   = #mem_add2#
+			   ,MEM_JOB    = #mem_job#
+			   ,MEM_LIKE   = #mem_like#
+		WHERE  MEM_ID	   = #mem_id#
+	</update>
+	
+	<delete id="deleteMemberInfo" parameterClass="string">
+		DELETE FROM MEMBER
+		WHERE MEM_ID = #mem_id#
+	</delete>
     
     
     

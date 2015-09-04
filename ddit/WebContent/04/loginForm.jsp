@@ -56,7 +56,8 @@
 					<a href="javascript:formSubmit();"><img src="${pageContext.request.contextPath }/image/btn_done3.jpg" alt="확인"/></a>
 				</p>
 				<p class="other">
-					<a href="/searchIDandPass.do"><img src="${pageContext.request.contextPath }/image/btn_idpass.gif" alt="아이디/비밀번호찾기"/></a>&nbsp;&nbsp;<a href="/join/step1.do"><img src="${pageContext.request.contextPath }/image/btn_join.gif" alt="회원가입"/></a>
+					<a href="/searchIDandPass.do"><img src="${pageContext.request.contextPath }/image/btn_idpass.gif" alt="아이디/비밀번호찾기"/></a>&nbsp;&nbsp;
+					<a href="/ddit/04/memberForm.jsp"><img src="${pageContext.request.contextPath }/image/btn_join.gif" alt="회원가입"/></a>
 				</p>
 			</div>
 			<p>

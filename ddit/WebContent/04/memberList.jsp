@@ -28,10 +28,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/main.css">
+
+
 </head>
 <body>
 <div id="list">
-<table style="width: 600px;">
+<table style="width: 900px;">
 	<thead>
 	<tr>
 			<th>아이디</th>
@@ -39,6 +41,10 @@
 			<th>이름</th>
 			<th>주민번호1</th>
 			<th>주민번호2</th>
+			<th>핸드폰</th>
+			<th>이메일</th>
+			<th>직업</th>
+			<th>취미</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -49,6 +55,10 @@
 			<th><a href="javascript:location.href='/ddit/04/memberView.jsp?mem_id=<%=((MemberVO)memberList.get(i)).getMem_id()%>'"><%=((MemberVO)memberList.get(i)).getMem_name() %></a></th>
 			<th><%=((MemberVO)memberList.get(i)).getMem_regno1() %></th>
 			<th><%=((MemberVO)memberList.get(i)).getMem_regno2() %></th>
+			<th><%=((MemberVO)memberList.get(i)).getMem_hp() %></th>
+			<th><%=((MemberVO)memberList.get(i)).getMem_mail() %></th>
+			<th><%=((MemberVO)memberList.get(i)).getMem_job() %></th>
+			<th><%=((MemberVO)memberList.get(i)).getMem_like() %></th>
 		</tr>
 	<%} %>
 	</tbody>

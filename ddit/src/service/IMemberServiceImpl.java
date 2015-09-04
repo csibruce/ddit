@@ -52,4 +52,37 @@ public class IMemberServiceImpl implements IMemberService {
 		return memberList;
 	}
 
+	@Override
+	public int updateMemberInfo(MemberVO memberInfo) {
+		int updateCnt = -1;
+		try {
+			updateCnt = dao.updateMemberInfo(memberInfo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return updateCnt;
+	}
+
+	@Override
+	public int deleteMemberInfo(String mem_id) {
+		int deleteCnt = -1;
+		try {
+			deleteCnt = dao.deleteMemberInfo(mem_id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return deleteCnt;
+	}
+
+	@Override
+	public String insertMemberInfo(MemberVO memberInfo) {
+		String mem_id = "";
+		try {
+			mem_id = dao.insertMemberInfo(memberInfo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}		
+		return mem_id;
+	}
+
 }

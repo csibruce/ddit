@@ -40,4 +40,22 @@ public class IMemberDaoImpl implements IMemberDao {
 		return client.queryForList("member.memberList");
 	}
 
+	@Override
+	public int updateMemberInfo(MemberVO memberInfo) throws SQLException {
+		
+		return client.update("member.updateMemberInfo", memberInfo);
+	}
+
+	@Override
+	public int deleteMemberInfo(String mem_id) throws SQLException {
+	
+		return client.delete("member.deleteMemberInfo", mem_id);
+	}
+
+	@Override
+	public String insertMemberInfo(MemberVO memberInfo) throws SQLException {
+		
+		return (String) client.insert("member.insertMemberInfo", memberInfo);
+	}
+
 }

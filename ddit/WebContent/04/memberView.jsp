@@ -13,13 +13,37 @@
     	
     	IMemberService service = IMemberServiceImpl.getInstance();
     	MemberVO memberInfo = service.getMemberInfo(params);
+    	//request.setAttribute("memberInfo", memberInfo);
+
     %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="../css/main.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+function updateDateCheck(frm){
+	frm.mem_hometel.value = frm.mem_hometel1.value +'-'+ 
+							frm.mem_hometel2.value +'-'+ 
+							frm.mem_hometel3.value;
+	
+	frm.mem_hp.value = frm.mem_hp1.value +'-'+ 
+					   frm.mem_hp2.value +'-'+ 
+					   frm.mem_hp3.value;
+	
+	frm.mem_mail.value = frm.mem_mail1.value +'@'+ 
+						 frm.mem_mail2.value;
+	
+	frm.mem_zip.value = frm.mem_zip1.value +'-'+ 
+						frm.mem_zip2.value;
+	return true;
+}
+
+
+</script>
 </head>
 <style>
 .fieldName {text-align: center; background-color: #f4f4f4;}
@@ -28,8 +52,8 @@
 td {text-align: left; }
 </style>
 <body>
-<form name="memberForm" method="post" action="${pageContext.request.contextPath }/member/memberUpdate.do">
-<input type="hidden" name="mem_id" id="mem_idPic" value="${memberInfo.mem_id }">	
+<form name="memberForm" method="post" action="/ddit/04/updateMemberInfo.jsp" onsubmit="return updateDateCheck(this);">
+<input type="hidden" name="mem_id" id="mem_idPic" value="<%=memberInfo.getMem_id() %>">	
 <table width="600" border="0" cellpadding="0" cellspacing="0">
 	<tr><td class="tLine" colspan="2"></td></tr>
 	<tr>
@@ -128,29 +152,39 @@ td {text-align: left; }
 		<td class="fieldName" width="100px" height="25">핸드폰</td>
 		<td>
 			<input type="hidden" name="mem_hp"/>
+			<%
+				
+				String[] mem_hp = memberInfo.getMem_hp().split("-");
+				
+			%>
 			<select name="mem_hp1">
-				<option value="010">010</option>
-				<option value="016">016</option>				        	
-				<option value="017">017</option>				        	
-				<option value="019">019</option>				        	
+				<option value="010" <%=mem_hp[0].equals("010")?"selected":"" %>>010</option>
+				<option value="016" <%=mem_hp[0].equals("016")?"selected":"" %>>016</option>				        	
+				<option value="017" <%=mem_hp[0].equals("017")?"selected":"" %>>017</option>				        	
+				<option value="019" <%=mem_hp[0].equals("019")?"selected":"" %>>019</option>				        	
 			</select>	-
-			<input type="text" name="mem_hp2" size="4" value="" /> - 
-			<input type="text" name="mem_hp3" size="4" value="" />
+			<input type="text" name="mem_hp2" size="4" value="<%=mem_hp[1] %>" /> - 
+			<input type="text" name="mem_hp3" size="4" value="<%=mem_hp[2] %>" />
 		</td>
 	</tr>
 	<tr><td class="tLine" colspan="2"></td></tr>
 	
 	<tr>
 		<td class="fieldName" width="100px" height="25">이메일</td>
+				<%
+				
+				String[] mem_mail = memberInfo.getMem_mail().split("@");
+				
+			%>
 		<td>
 			<input type="hidden" name="mem_mail" />
-			<input type="text" name="mem_mail1" value="" /> @
+			<input type="text" name="mem_mail1" value="<%=mem_mail[0] %>" /> @
 			<select name="mem_mail2">
-				<option value="naver.com">naver.com</option>
-				<option value="daum.net">daum.net</option>
-				<option value="hanmail.net">hanmail.net</option>
-				<option value="nate.com">nate.com</option>
-				<option value="gmail.com">gmail.com</option>				
+				<option value="naver.com" <%=mem_mail[1].equals("naver.com")?"selected":"" %>>naver.com</option>
+				<option value="daum.net" <%=mem_mail[1].equals("daum.net")?"selected":"" %>>daum.net</option>
+				<option value="hanmail.net" <%=mem_mail[1].equals("hanmail.net")?"selected":"" %>>hanmail.net</option>
+				<option value="nate.com" <%=mem_mail[1].equals("nate.com")?"selected":"" %>>nate.com</option>
+				<option value="gmail.com" <%=mem_mail[1].equals("gmail.com")?"selected":"" %>>gmail.com</option>				
 			</select>
 		</td>
 	</tr>
@@ -158,27 +192,34 @@ td {text-align: left; }
 		
 	<tr>
 		<td class="fieldName" width="100px" height="25">주소</td>
+					<%
+				
+				String mem_add1 = memberInfo.getMem_add1();
+				String mem_add2 = memberInfo.getMem_add2();
+				String[] mem_zip  =memberInfo.getMem_zip().split("-");
+				
+			%>
 		<td>
 			<input type="hidden" name="mem_zip" />
-			<input type="text" name="mem_zip1" id="mem_zip1" size="3" value="" /> - 
-			<input type="text" name="mem_zip2" id="mem_zip2" size="3" value="" />
+			<input type="text" name="mem_zip1" id="mem_zip1" size="3" value="<%=mem_zip[0] %>" /> - 
+			<input type="text" name="mem_zip2" id="mem_zip2" size="3" value="<%=mem_zip[1] %>" />
 			<input type="button" value="우편번호검색" onclick="zipSearch();"/><br>
-			<input type="text" name="mem_add1" id="mem_add1" value=""/>
-			<input type="text" name="mem_add2" id="mem_add2" value=""/>
+			<input type="text" name="mem_add1" id="mem_add1" value="<%=mem_add1 %>"/>
+			<input type="text" name="mem_add2" id="mem_add2" value="<%=mem_add2 %>"/>
 		</td>
 	</tr>
 	<tr><td class="tLine" colspan="2"></td></tr>
 	<tr>
 		<td class="fieldName" width="100px" height="25">직 업</td>
 		<td>
-			<input type="text" name="mem_job" value=""/>
+			<input type="text" name="mem_job" value="<%=memberInfo.getMem_job() != null?memberInfo.getMem_job():"" %>"/>
 		</td>
 	</tr>
 	<tr><td class="tLine" colspan="2"></td></tr>
 	<tr>
 		<td class="fieldName" width="100px" height="25">취 미</td>
 		<td>
-			<input type="text" name="mem_like" value=""/>
+			<input type="text" name="mem_like" value="<%=memberInfo.getMem_like() != null?memberInfo.getMem_like():"" %>"/>
 		</td>
 	</tr>
 	<tr><td class="tLine" colspan="2"></td></tr>
@@ -187,14 +228,20 @@ td {text-align: left; }
 	
 	<tr>
 		<td class="btnGroup" colspan="2" >
-			<input type="button" value="수정"/>
+			<input type="submit" value="수정" onclick=""/>
 			<input type="reset" value="취소"/>
-			<input type="button" value="삭제" onclick=""/>
-			<input type="button" value="목록" onclick=""/>
+			<input type="button" value="삭제" onclick="javascript:location.href='/ddit/04/deleteMemberInfo.jsp?mem_id=<%=memberInfo.getMem_id()%>'"/>
+			<input type="button" value="목록" onclick="javascript:location.href='/ddit/04/memberList.jsp'"/>
 		</td>
 	</tr>
 </table>
 </form>
+<script type="text/javascript">
+(function(){
+
+})();
+
+</script>
 </body>
 </html>
 

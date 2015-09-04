@@ -1,5 +1,6 @@
 @CHARSET "UTF-8";
 /* /css/main.css  */
+.memName{color:red;}
 
 body,div,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textarea,button{margin:0;padding:0;}
 body{color:#2f2f2f;font-size:12px;font-family:"돋움",Dotum,AppleGothic,Sans-serif;text-align:center;background:#fff}
