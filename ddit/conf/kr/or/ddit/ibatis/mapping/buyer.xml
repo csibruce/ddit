@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="buyer">
+
+	<typeAlias alias="buyerVO" type="vo.BuyerVO"/>
+	<sql id="selectAll">
+		SELECT *
+    	  FROM BUYER
+	</sql>
+	
+
+	<!-- Map<String, String> params = new HashMa<String, String>();
+	     params.put("mem_id", "a001");
+	     params.put("mem_pass", "asdfasdf")
+	-->
+    <select id="getbuyerinfo" parameterClass="string" resultClass="buyerVo">
+    	<include refid="selectAll"/>
+
+		WHERE BUYER_ID = #buyer_id#    			
+
+    </select>	
+    
+    <select id="buyerList" resultClass="buyerVo">
+    	<include refid="selectAll"/>
+    </select>
+    
+    <update id="updatebuyerinfo" parameterClass="buyerVo" >
+    UPDATE BUYER
+    SET BUYER_ID = #buyer_id# ,
+    	BUYER_NAME = #buyer_name#,
+    	BUYER_BANKNAME = #buyer_bankname#,
+    	BUYER_BANK = #buyer_bank#,
+    	BUYER_ADD1 = #buyer_add1#,
+    	BUYER_ADD2 = #buyer_add2#,
+    	BUYER_COMTEL = #buyer_comtel#,
+    	BUYER_FAX = #buyer_fax#,
+    	BUYER_MAIL = #buyer_mail#
+    WHERE BUYER_ID = #buyer_id#
+    </update>
+    
+    <insert id="insertbuyer" parameterClass="buyerVo">
+    INSERT INTO BUYER(
+    					BUYER_ID,
+    					BUYER_NAME,
+    					BUYER_BANKNAME,
+    					BUYER_BANK,
+    					BUYER_ADD1,
+    					BUYER_ADD2,
+    					BUYER_COMTEL,
+    					BUYER_FAX,
+    					BUYER_MAIL,
+    					BUYER_LGU
+    					)
+    		VALUES(
+    					#buyer_id#,
+    		 			#buyer_name#,
+    		 			#buyer_bankname#,
+    		 			#buyer_bank#,
+    		 			#buyer_add1#,
+    		 			#buyer_add2#,
+    		 			#buyer_comtel#,
+    		 			#buyer_fax#,
+    		 			#buyer_mail#,
+    		 			#buyer_lgu#
+    		 			)
+ 
+    <selectKey>
+  	SELECT BUYER_NAME FROM BUYER
+     WHERE BUYER_ID = #buyer_id#
+    </selectKey>
+    
+    </insert>
+    
+    <delete id="deletebuyer" parameterClass="string">
+    	DELETE FROM BUYER
+    	WHERE BUYER_ID = #buyer_id#
+    </delete>
+    
+    
+    
+    
+</sqlMap>

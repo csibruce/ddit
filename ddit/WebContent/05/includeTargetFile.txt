@@ -1,0 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+<%
+	String realPath = application.getRealPath("");
+%>
+외부 jsp내에 선언된 변수 : <%=message%>

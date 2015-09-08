@@ -28,8 +28,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/main.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
-
+	<script type="text/javascript">
+		$(function(){
+			$('tbody tr:nth-child(odd)').css('background','lightblue');
+		})
+	</script>
 </head>
 <body>
 <div id="list">
@@ -67,6 +72,7 @@
 	<input type="button" value="회원등록" onclick="javascript:location.href='/ddit/04/loginForm.jsp'">
 </div>
 </div>
+
 </body>
 </html>
 

@@ -9,6 +9,7 @@ import com.ibatis.sqlmap.client.SqlMapException;
 import dao.IMemberDao;
 import dao.IMemberDaoImpl;
 
+import vo.BuyerVO;
 import vo.MemberVO;
 
 public class IMemberServiceImpl implements IMemberService {
@@ -83,6 +84,61 @@ public class IMemberServiceImpl implements IMemberService {
 			e.printStackTrace();
 		}		
 		return mem_id;
+	}
+
+	@Override
+	public List<BuyerVO> getBuyerList() {
+		List<BuyerVO> buyerList = null;
+		try {
+			buyerList = dao.getBuyerList();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return buyerList;
+	}
+
+	@Override
+	public BuyerVO getbuyerInfo(String buyer_id) {
+		BuyerVO buyerinfo = null;
+		try {
+			buyerinfo = dao.getbuyerInfo(buyer_id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return buyerinfo;
+	}
+
+	@Override
+	public int updateBuyerInfo(BuyerVO buyerinfo) {
+		int updateCnt = -1;
+		try {
+			updateCnt = dao.updateBuyerInfo(buyerinfo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return updateCnt;
+	}
+
+	@Override
+	public String insertBuyer(BuyerVO buyerinfo) {
+		String buyer_name = "";
+		try {
+			buyer_name = dao.insertBuyer(buyerinfo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return buyer_name;
+	}
+
+	@Override
+	public int deleteBuyer(String buyer_id) {
+		int deleteCnt = -1;
+		try {
+			deleteCnt = dao.deleteBuyer(buyer_id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return deleteCnt;
 	}
 
 }

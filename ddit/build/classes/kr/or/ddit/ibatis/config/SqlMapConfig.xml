@@ -18,6 +18,7 @@
 		</dataSource>
 	</transactionManager>
 	<sqlMap resource="kr/or/ddit/ibatis/mapping/member.xml"/>
+	<sqlMap resource="kr/or/ddit/ibatis/mapping/buyer.xml"/>
 
 </sqlMapConfig>
 

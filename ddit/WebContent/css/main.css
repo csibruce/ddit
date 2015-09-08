@@ -20,7 +20,6 @@ a:hover {    text-decoration: underline;}
 #leftMenu {width: 100px; height: 100%; float: left;
            background-color: green; min-height: 500px; }
 
-#content {width:500px; min-height: 500px; margin-left: 100px; }
 
 #bottom {width: 600px; height: 60px;
            background-color: #e0e0e0;  }

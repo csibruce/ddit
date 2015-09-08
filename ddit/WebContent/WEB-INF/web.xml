@@ -21,5 +21,54 @@
   	</jsp-property-group>
   </jsp-config>
   
+  <!-- 해당 웹 어플리케이션 내에 전역적으로 활용될수있는 상수 선언 -->
+  <context-param>
+  	<param-name>oracleDriver</param-name>
+  	<param-value>oracle.jdbc.driver.OracleDriver</param-value>
+  </context-param>
+  
+  <context-param>
+  	<param-name>oracleURL</param-name>
+  	<param-value>jdbc:oracle:thin:@localhost:1521:xe</param-value>
+  </context-param>
+  
+  <context-param>
+  	<param-name>mysqlDriver</param-name>
+  	<param-value>com.mysql.jdbc.Driver</param-value>
+  </context-param>
+  
+  <context-param>
+  	<param-name>mysqlURL</param-name>
+  	<param-value>jdbc:mysql://ip address:3306/ddit?useUnicode=true&amp;characterEncoding=euc-kr</param-value>
+  </context-param>
+  
+  <!-- 
+  	에러처리 우선순위 : 1. jsp내에서 디렉티비에 선언된 에러처리
+  						2. web.xml내에서 선언된 exception-type
+  						3. web.xml내에서 선언된 error-code(활용)
+   -->
+  
+  <error-page>
+  	<error-code>404</error-code>
+  	<location>/error/error404.jsp</location>	
+  </error-page>
+  <error-page>
+  	<error-code>500</error-code>
+  	<location>/error/error500.jsp</location>
+  </error-page>
+  
+  <error-page>
+  	<exception-type>java.lang.NullPointerException</exception-type>
+  	<location>/error/error500.jsp</location>
+  </error-page>
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
 </web-app>

@@ -12,7 +12,7 @@ a:hover,a:active,a:focus{text-decoration:underline}
 #header{width:800px; text-align: right;}
 #container{width:800px;}
 #container:after{display:block;clear:both;content:''}
-#content{float:right;width:600px; height: 500px; background-color: white; margin-top: 10px;}
+#content{float:right;width:600px; height: auto; background-color: white; margin-top: 10px;}
 #footer{width:800px}
 .left{float:left;width:200px; height: 300px; background-color: darkgray; margin-top: 10px;}
 .left .leftmenu li {position:relative; list-style:none; text-align:left; width:100px; padding-bottom:5px; margin-top: 10px; background: orange; font-family:'돋움',Dotum,AppleGothic,sans-serif;font-size:12px;}
@@ -72,9 +72,10 @@ a:hover,a:active,a:focus{text-decoration:underline}
 	background:
 		url(http://html.nhndesign.com/guidelines/uio/img/menu/bg_tab_left.gif)
 		0 0 no-repeat;
-	color: #666;
+	color: white;
 	line-height: 14px;
-	text-decoration: none
+	text-decoration: none;
+	font-weight: bold;
 }
 
 .tab_menu li a:hover {
