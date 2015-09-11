@@ -1,35 +1,16 @@
-<%@page import="vo.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%
-
- String loginname = session.getAttribute("LOGIN_MEMBERINFO")!=null?((MemberVO)session.getAttribute("LOGIN_MEMBERINFO")).getMem_name() : "";
-%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
-<script type="text/javascript">
-	
-	function logout(){
-		var logout = "out";	
-		location.href='<%=request.getContextPath() %>/06/loginCheck.jsp?logout='+logout;
-		
-	}
-
-	
-</script>
-
-
-
 </head>
-<body onload="logincheck()">
+<body>
 	<div id="login-box">
-		<form name="login" action="<%=request.getContextPath() %>/06/loginCheck.jsp" 
-			method="post" onsubmit="cookiecheck(this)">
-			<div id="loginok"><br><br><span><%=loginname %>님</span><br> login되었습니다.</div>
+		<form name="login" action="loginCheck.jsp" 
+			method="post">
 			<div id="login-box-name">Username:</div>
 			<div id="login-box-field">
 				<input name="mem_id" title="Username" value="" size="30"/>
@@ -40,9 +21,8 @@
 					value="" size="30"/>
 			</div>
 			<div class="btn">
-				<input type="checkbox" name="save_mem_id" value="save">아이디저장
-				<input id="loginbtn" type="submit" value="로그인"/>
-				<input type="button" value="로그아웃" onclick="logout()"/>
+				<input type="submit" value="로그인"/>
+				<input type="button" value="로그아웃"/>
 			</div>
 		</form>
 	</div>

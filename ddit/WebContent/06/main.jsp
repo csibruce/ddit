@@ -13,6 +13,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/cookieControl.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -37,8 +38,30 @@
 			$('#apply').show();
 			$('#update').hide();
 			$('#loginbtn').show();
-		}		
+			if(Get_Cookie("mem_id")){
+				$('input[name="mem_id"]').val(Get_Cookie("mem_id"))
+				$("input:checkbox[name='save_mem_id']").attr("checked", "checked");
+				
+			}
+		}
+		$("input:checkbox[name='save_mem_id']").click(function(){
+			if($("input:checkbox[name='save_mem_id']").is(":checked")==true){	
+				$('input[name="mem_id"]').val(Get_Cookie("mem_id"));
+			}else{			
+				$('input[name="mem_id"]').val("");
+			}
+		})
+		
 	}
+	function cookiecheck(get){
+		if($("input:checkbox[name='save_mem_id']").is(":checked")==true){	
+			Set_Cookie("mem_id",get.mem_id.value);
+		}else{
+			Delete_Cookie("mem_id");
+			Set_Cookie("mem_id","");
+		}
+	}
+	
 </script>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/layout.css"> 
 </head>

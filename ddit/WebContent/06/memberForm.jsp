@@ -25,7 +25,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="../css/main.css">
-
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/commons.js"></script>
 <style>
 .fieldName {text-align: center; background-color: #f4f4f4;}
 .tLine {background-color: #d2d2d2; height: 1px;}
@@ -38,6 +38,104 @@ td {text-align: left; }
 <script type="text/javascript">
 
 function beforesubmit(get){
+	// 정규식 패턴문자
+	// [] : 범위 ex) [0-9], [a-z], [A-Z], [a-zA-Z], [가-힣]
+	// [0-9] : \d
+	// [a-zA-Z0-9_] : \w
+	// ^ : 시작문자의 타입
+	// $ : 종료문자의 타입
+	// * : 패턴에 일치하는 문자가 반복되지않거나 무한대 반복 [a-z]*
+	// + : 패턴에 일치하는 문자가 한번이상 무한대 반복 \d+
+	// ? : 해당 패턴에 일치 또는 불일치 모두 추출대상
+	// () : 패턴의 소그룹으로 그룹핑. test@ddit.or.kr [a-z]+@[a-z]+(\.[a-z]+){2,3}
+	//							 test@ddit.kr
+	// . : 모든 문자 범위의 한글자.
+	// {} : 반복횟수 지정. ex) [0-9]{3}, [a-z]{3,}, \w{2,3}
+	// \ : 정규식 패턴문자의 의미를 탈출.
+	
+	if(get.mem_name.value != ""){
+		if(!/^[가-힣]{2,3}$/.test(get.mem_name.value)){
+			alert('이름은 한글2글자에서 3글자로 입력해주세요.');
+			get.mem_name.value='';
+			get.mem_name.focus();
+			return false;
+		}
+	}else{
+		alert('성명을 입력해 주세요.')
+		return false;
+	}
+	
+	if(get.mem_regno1.value != "" && get.mem_regno2.value != ""){
+		var regno = get.mem_regno1.value +"-"+ get.mem_regno2.value
+		if(!regnoValidation(regno)){
+			alert('해당 주민번호는 유효하지 않습니다.');
+			get.mem_regno1.value = "";
+			get.mem_regno1.value = "";
+			get.mem_regno1.focus();
+			return false;
+		}
+	}else{
+		alert('주민번호를 입력해주세요.');
+		return false;
+	}
+	
+	if(get.mem_bir1.value != "" && get.mem_bir2.value != "" && get.mem_bir3.value != ""){
+		get.mem_bir.value = get.mem_bir1.value + "/" +
+  		get.mem_bir2.value + "/" +
+  		get.mem_bir3.value;
+		// 년도 숫자4글자/월 숫자2글자/일 숫자2글자
+		if(!/^[1-9]{4}\/[0-9]{2}\/[0-9]{2}/.test(get.mem_bir.value)){
+			alert('생년월일을 올바르게 입력해주세요.');
+			get.mem_bir1.value = "";
+			get.mem_bir2.value = "";
+			get.mem_bir2.value = "";
+			get.mem_bir1.focus();
+			return false;
+		}
+	}else{
+		alert('생년월일을 입력해주세요.');
+		return false;
+	}
+	
+	if(get.mem_id.value!=""){
+		if(!/^[0-9a-zA-Z]{8,20}$/.test(get.mem_id.value)){
+			alert('아이디를 올바르게 입력해주세요.');
+			get.mem_id.value = "";
+			get.mem_id.focus();
+			return false;
+		}
+	}else{
+		alert('아이디를 입력해주세요');
+		return false;
+	}
+	if(get.mem_pass.value!=""){
+		if(!/^[0-9a-zA-Z]{8,20}$/.test(get.mem_pass.value)){
+			alert('pass를 올바르게 입력해주세요.');
+			get.mem_pass.value = "";
+			get.mem_pass.focus();
+			return false;
+		}
+	}else{
+		alert('pass를 입력해주세요');
+		return false;
+	}
+	
+	if(get.mem_mail_id.value!=""){
+		get.mem_mail.value = get.mem_mail_id.value +"@"+
+		   get.mem_mail_domain.value;
+		//test@ddit.or.kr  
+		if(!/^[a-z0-9_]{5,12}@[a-z]+(\.[a-z]+){1,2}/.test(get.mem_mail.value)){
+			alert('메일을 올바르게 입력해주세요');
+			get.mem_mail.value = "";
+			get.mem_mail.focus();
+			return false;
+		}
+	}else{
+		alert('메일주소를 입력해라');
+		return false;
+	}
+	
+	
 	get.mem_bir.value = get.mem_bir1.value + "/" +
 				  		get.mem_bir2.value + "/" +
 				  		get.mem_bir3.value;

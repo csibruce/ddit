@@ -1,3 +1,4 @@
+<%@page import="java.net.URLDecoder"%>
 <%@page import="java.net.URLEncoder"%>
 <%@page import="vo.MemberVO"%>
 <%@page import="service.IMemberServiceImpl"%>
@@ -7,9 +8,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+
 <%	
 	request.setCharacterEncoding("UTF-8");
-
+	if(request.getParameter("save_mem_id")!=null){
+		String dd = request.getParameter("save_mem_id");
+	}
 	if(request.getParameter("logout")!=null){
 		session.removeAttribute("LOGIN_MEMBERINFO");
 		response.sendRedirect("/ddit/06/main.jsp?contentPage=memberList.jsp");
@@ -29,14 +33,18 @@
 	
 	
 	if(memberInfo!=null){
+				
 		session.setAttribute("LOGIN_MEMBERINFO", memberInfo);
-		RequestDispatcher rd = request.getRequestDispatcher("/06/main.jsp?contentPage=memberList.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/06/main.jsp?contentPage=memberList.jsp&saveid");
 		rd.forward(request, response);
 	}else{
 		
 		String message = URLEncoder.encode("회원이 아닙니다.", "UTF-8");
 		response.sendRedirect("/ddit/06/main.jsp?message="+message);
 	}
+	
+	
 	}
 
 %>
+
