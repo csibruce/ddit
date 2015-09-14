@@ -62,8 +62,14 @@
   	<location>/error/error500.jsp</location>
   </error-page>
   
-  
-  
+  <!-- 
+  	분단위의 세션 유효시간 설정. 
+  	세션 유효시간 설정시의 우선순위 : 1.jsp에서 설정한 setMaxInactiveInterval()시간
+  								2.web.xml내에서 선언된 session-timeout 시간
+  -->
+  <session-config>
+  	<session-timeout>60</session-timeout>
+  </session-config>
   
   
   

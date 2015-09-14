@@ -38,3 +38,19 @@ function regnoValidation(regno){
 	
 	
 }
+
+//브라우져별 XMLHttpRequest 취득
+function createXMLHttpRequest(){
+	var xmlHttp;
+	//IE에서  XMLHttpRequest취득
+	if(window.ActiveXObject){
+		xmlHttp = new ActiveXObject('Microsoft.XMLHTTP');	
+	}else{
+	//IE이외브라우져에서 XMLHttpRequest취득
+		xmlHttp = new XMLHttpRequest();
+	}
+	return xmlHttp;
+}
+
+
+
