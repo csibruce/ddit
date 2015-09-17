@@ -6,6 +6,10 @@
 <%@ page language="java" contentType="text/plain; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%
+    String msg = request.getParameter("msg");
+    
+    application.log("msg : "+msg);
+    
 	IMemberService service = IMemberServiceImpl.getInstance();
 	List<MemberVO> memberList = service.getMemberList();
 	

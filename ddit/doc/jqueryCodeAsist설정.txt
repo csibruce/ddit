@@ -1,0 +1,18 @@
+jQuery code asist plug_in 설치
+1. http://code.google.com/a/eclipselabs.org/p/jquerywtp/downloads/list
+
+2. cmd -> java -jar jqueryWTP1.20foEN.jar
+
+		활성화된 창 : jar file - 기존에 활용되고 있는 이클립스내에 플러그인 폴더내에 
+								org.eclipse.wst.jsdt.core_버젼.jar을 브라우저버튼
+								
+					output dir - jquery api가 추가된 jar파일의 위치를 브라우즈버튼클릭으로 선택
+		*javascript api와 jquery api 가 포함된 jar파일이 생성
+	
+3.기존에 활용하고 있는 이클립스내에 플러그인폴더 내에 새로 생성된 jar파일을 덮어쓰기
+
+4.이클립스종료
+
+5. C:\Users\pc16\Dropbox\Dropbox\git\.metadata\.plugins\org.eclipse.wst.jsdt.core 삭제
+
+6 이클립스 실행

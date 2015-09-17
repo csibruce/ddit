@@ -25,6 +25,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="../css/main.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/commons.js"></script>
 <style>
 .fieldName {text-align: center; background-color: #f4f4f4;}
@@ -160,7 +161,56 @@ function beforesubmit(get){
 	alert(get.mem_bir.value+"\n"+get.mem_hometel.value+"\n"+get.mem_comtel.value+"\n"+get.mem_mail.value+"\n"+get.mem_zip.value);
 	return true;
 }
+function idCheck(){
+	var mem_id = $('input[name=mem_id]').val();
+	if(mem_id != ""){
+		$.ajax({
+			url:'<%=request.getContextPath()%>/06/idOverlapCheck.jsp',
+			dataType:'xml',
+			data:{id:mem_id},
+			error:function(result){
+				alert('error:'+result);	
+			},
+			success:function(result){
+				 var check = $(result).find('check').text();
+				 //var ddd	=  0
+				 alert(check);
+					if(check=='tt'){
+						alert('다른아이디를 이용해주세요');
+					}else{
+						alert('사용가능한 아이디입니다.');
+					}
+	         
+				}
+			});
+	}else{
+		alert('아이디를 입력해 주세요');
+	}
+	//1.input name='mem_id' tag 를 셀렉팅
+	//2.선택된 name='mem_id'값 존재여부 체크
+	//3.존재한다면
+	//		idOverlapCheck.jsp로 mem_id=입력값 전달해서 ajax요청
+	//	else
+	//		alert('아이디를 입력해주세요');
+	//4.ajax 요청 후 success:function(){
+	//						취득값이 false
+	//							alert('사용할수없는아이디');
+	//							input name='mem_id'의 value값을 초기화 후 포커싱
+	//								true
+	//							alert('사용할수있는 아이디');
+	//							input name='mem_pass'로 포커싱
+	//						}
+}
 
+
+function zipcodeSearch(){
+	//모달:팝업이 활성화되면 포커스가 활성화된 팝업에 강제됨
+	//모달리스:팝업의 활성화 유무에 관계없이 포커스가 이동.
+	var url ='<%=request.getContextPath()%>/06/zipcodeSearch.jsp';
+	var options = 'toolbar=no,scrollbars=no,resizable=no,copyhistory=no'+
+				  'status=no,location=no,menubar=no,width=375,height=400';
+	window.open(url, '우편번호검색', options);
+}
 
 </script>
 
@@ -208,7 +258,7 @@ function beforesubmit(get){
 		<td class="fieldName" width="100px" height="25">아이디</td>
 		<td>
 			<input type="text" class="disAble" name="mem_id" 
-				value="<%=memberinfo.getMem_id()!=null?memberinfo.getMem_id():""%>" /> 8 ~ 20 자리 영문자 및 숫자 사용 <b><a href="#">[ID 중복검사]</a></b>
+				value="<%=memberinfo.getMem_id()!=null?memberinfo.getMem_id():""%>" /> 8 ~ 20 자리 영문자 및 숫자 사용 <b><a href="javascript:idCheck()">[ID 중복검사]</a></b>
 		</td>
 	</tr>
 	<tr><td class="tLine" colspan="2"></td></tr>
@@ -351,7 +401,7 @@ function beforesubmit(get){
 				value="<%=zip[0]!=null?zip[0]:"" %>" /> - 
 			<input type="text" id="mem_zip2" size="3" 
 				value="<%=zip[1]!=null?zip[1]:"" %>" />
-			<input type="button" value="우편번호검색"/><br>
+			<input type="button" value="우편번호검색" onclick="zipcodeSearch()"/><br>
 			<input type="text" id="mem_add1" name="mem_add1" size="50" 
 				value="<%=memberinfo.getMem_add1()!=null?memberinfo.getMem_add1():"" %>" />
 			<input type="text" id="mem_add2" name="mem_add2" size="50" 

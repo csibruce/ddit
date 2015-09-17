@@ -40,6 +40,11 @@ function dynamicCreateForm(){
 	xmlBtn.setAttribute("type", "button");
 	xmlBtn.setAttribute("value", "xmlReq");
 	
+	var jsonBtn = document.createElement('input');
+	jsonBtn.setAttribute('type', 'button');
+	jsonBtn.setAttribute('value', 'jsonReq');
+	
+	
 	
 	//IE11 이하버젼에서 활용
 	xmlBtn.attachEvent("onclick", function(){
@@ -53,10 +58,10 @@ function dynamicCreateForm(){
 			if(xmlHttp.readyState == 4){
 				if(xmlHttp.status==200){
 					var xmlData = xmlHttp.responseText;
-					//document.getElementById('test').innerHTML=xmlData;
+					document.getElementById('test').innerHTML=xmlData;
 					//var xmlData = xmlHttp.responseXML;
 				
-					alert('xml: '+xmlData);
+					//alert('xml: '+xmlData);
 				}
 			}
 		};
@@ -67,12 +72,37 @@ function dynamicCreateForm(){
 	//IE11 버젼 또는 IE이외의 브라우져.
 	//xmlBtn.addEventListener("click", listener, useCapture);
 	
+	jsonBtn.attachEvent('onclick', function(){
+		var xmlHttpReq = createXMLHttpRequest();
+		
+		xmlHttpReq.onreadystatechange = function(){
+			if(xmlHttpReq.readyState == 4){
+				if(xmlHttpReq.status == 200){
+					var jsonData = eval('('+xmlHttpReq.responseText+')');
+					//alert(jsonData);
+					for(var i=0;i<jsonData.length; i++){
+						window.console.log('mem_id : '+jsonData[i].mem_id+
+											'| mem_pass : '+jsonData[i].mem_pass);
+					}
+				}
+			}
+		};
+		
+		var url = '<%=request.getContextPath()%>/11/createJsonContent.jsp';
+		xmlHttpReq.open('post',url,true);
+		xmlHttpReq.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+		xmlHttpReq.send('msg=hello');
+	});
+	
 	frm.appendChild(xmlBtn);
+	frm.appendChild(jsonBtn);
 	document.body.appendChild(frm);
 	
 }
 $(function(){
 	$(document.body).append("<input type='button' value='jqueryXMLReq'/>");
+	$(document.body).append("<input type='button' value='jqueryJsonReq'/>");
+	
 	$("input[value=jqueryXMLReq]").click(function(){
 		$.ajax({
 			type:"post",
@@ -96,6 +126,23 @@ $(function(){
 			}
 		});
 	})
+	$('input[value=jqueryJsonReq]').click(function(){
+		$.ajax({
+			url:'<%=request.getContextPath()%>/11/createJsonContent.jsp',
+			dataType:'json',
+			data:{msg:'hello'},
+			error:function(result){
+				alert(result);	
+			},
+			success:function(result){
+				for(var i=0;i<result.length;i++){
+				window.console.log('mem_id : '+result[i].mem_id+
+								   '| mem_pass'+ result[i].mem_pass);
+					
+				}
+			}
+		});
+	});
 });
 </script>
 </head>

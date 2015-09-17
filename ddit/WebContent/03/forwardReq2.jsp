@@ -22,6 +22,9 @@ mem_id : <%=requestValue.getMem_id() %><br>
 mem_pass : <%=requestValue.getMem_pass() %><br> 
 mem_name : <%=requestValue.getMem_name() %><br>
 <%} %>
+el mem_id = ${requestScope.memberInfo.mem_id }<br>
+el mem_pass = ${requestScope.memberInfo.mem_pass }<br>
+el mem_name = ${requestScope.memberInfo.mem_name }<br>
 <hr>
 <h3>pageContext</h3>
 <%
@@ -29,10 +32,13 @@ mem_name : <%=requestValue.getMem_name() %><br>
 if(pageContextValue!=null){
 %>
 mem_id : <%=pageContextValue.getMem_id() %><br> 
-mem_pass : <%=pageContextValue.getMem_pass() %><br> 
+mem_pass : <%=pageContextValue.getMem_pass() %><br>
 mem_name : <%=pageContextValue.getMem_name() %><br>
 <%} %>
 
+el mem_id : ${pageScope.memberInfo.mem_id }<br>
+el mem_pass : ${pageScope.memberInfo.mem_pass } <br>
+el mem_name : ${pageScope.memberInfo.mem_name }<br>
 <hr>
 <h3>session</h3>
 <%
@@ -43,6 +49,10 @@ mem_id : <%=sessionValue.getMem_id() %><br>
 mem_pass : <%=sessionValue.getMem_pass() %><br> 
 mem_name : <%=sessionValue.getMem_name() %><br>
 <%} %>
+
+el mem_id : ${sessionScope.memberInfo.mem_id }<br>
+el mem_pass : ${sessionScope.memberInfo.mem_pass } <br>
+el mem_name : ${sessionScope.memberInfo.mem_name }<br>
 <hr>
 <h3>application</h3>
 <%
@@ -53,6 +63,9 @@ mem_id : <%=applicationValue.getMem_id() %><br>
 mem_pass : <%=applicationValue.getMem_pass() %><br> 
 mem_name : <%=applicationValue.getMem_name() %><br>
 <%} %>
+el mem_id : ${applicationScope.memberInfo.mem_id }<br>
+el mem_pass : ${applicationScope.memberInfo.mem_pass } <br>
+el mem_name : ${applicationScope.memberInfo.mem_name }<br>
 
 </body>
 </html>
