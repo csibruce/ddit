@@ -1,0 +1,8 @@
+json 컨텐츠 작성
+1. api : http://jackson.codehaus.org.1.9.9/javadoc.index.html
+   download : http://wiki.fasterxml.com/JacksonDownload
+   
+   jackson-mapper-asl-1.9.13.jar
+   jackson-core-asl-1.9.13.jar
+   
+   web-inf/lib import
