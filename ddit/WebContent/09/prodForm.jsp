@@ -1,11 +1,50 @@
+<%@page import="vo.BuyerVO"%>
+<%@page import="vo.LprodVO"%>
+<%@page import="java.util.List"%>
+<%@page import="service.IMemberServiceImpl"%>
+<%@page import="service.IMemberService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ 
+<%
+
+	IMemberService service = IMemberServiceImpl.getInstance();
+	List<LprodVO> lprodlist = service.getlprodList();
+	List<BuyerVO> buyerlist = service.getBuyerList();
+
+
+%>
+    
+    
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="../css/main.css">
+<script type="text/javascript">
+	function getprodid(get){
+		//alert(get);
+		var str = get;
+		//alert(str);
+		$.ajax({
+			'url':'getprodid.jsp',
+			'type':'post',
+			'data':"name="+str,
+			'success':function(result){
+				$('input[name=prod_id]').val(result);
+			},
+			'errorr':function(result){
+				alert('error');
+			},
+			'dataType':'text'
+		});
+		
+		
+	}
+	
+</script>
 </head>
 <style>
 .fieldName {text-align: center; background-color: #f4f4f4;}
@@ -14,13 +53,13 @@
 td {text-align: left; }
 </style>
 <body>
-<form name="proForm" method="post">
+<form name="proForm" method="post" action="<%=request.getContextPath()%>/09/insertProd.jsp">
 <table width="600" border="0" cellpadding="0" cellspacing="0">
 	<tr><td class="tLine" colspan="2"></td></tr>
 	<tr>
 		<td class="fieldName" width="100px" height="25">상품코드</td>
 		<td>
-			<input type="text" name="prod_id" value=""/>
+			<input type="text" name="prod_id" value=""/>상품분류코드 뒤6자리를 입력하세요
 		</td>
 	</tr>
 	<tr><td class="tLine" colspan="2"></td></tr>
@@ -34,13 +73,25 @@ td {text-align: left; }
 	
 	<tr>
 		<td class="fieldName" width="100px" height="25">상품분류</td>
-		<td><input type="text" name="prod_lgu" value=""/></td>
+		<td>
+			<select  name="prod_lgu" onchange="getprodid(this.value)">
+				<%for(LprodVO lv : lprodlist){ %>
+					<option  value="<%=lv.getLPROD_GU() %>"><%=lv.getLPROD_NM() %></option>
+				<%} %>
+			</select>
+		</td>
 	</tr>
 	<tr><td class="tLine" colspan="2"></td></tr>
 	
 	<tr>
 		<td class="fieldName" width="100px" height="25">공급업체(코드)</td>
-		<td><input type="text" name="prod_buyer" value=""/></td>
+		<td>
+			<select name="prod_buyer">
+				<%for(BuyerVO bv : buyerlist){ %>
+					<option value="<%=bv.getBuyer_id() %>"><%=bv.getBuyer_name() %></option>
+				<%} %>
+			</select>
+		</td>
 	</tr>
 	<tr><td class="tLine" colspan="2"></td></tr>
 	
@@ -130,7 +181,7 @@ td {text-align: left; }
 	
 	<tr>
 		<td class="btnGroup" colspan="2" >
-			<input type="button" value="상품등록"/>
+			<input type="submit" value="상품등록"/>
 			<input type="reset" value="취소"/>
 			<input type="button" value="상품목록"/>
 		</td>

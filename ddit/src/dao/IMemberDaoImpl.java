@@ -11,7 +11,9 @@ import kr.or.ddit.ibatis.config.BuildedSqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClient;
 
 import vo.BuyerVO;
+import vo.LprodVO;
 import vo.MemberVO;
+import vo.ProdVO;
 
 public class IMemberDaoImpl implements IMemberDao {
 	
@@ -87,6 +89,30 @@ public class IMemberDaoImpl implements IMemberDao {
 	public int deleteBuyer(String buyer_id) throws SQLException {
 		
 		return client.delete("buyer.deletebuyer", buyer_id);
+	}
+
+	@Override
+	public List<ProdVO> getprodList() throws SQLException {
+		
+		return client.queryForList("prod.prodList");
+	}
+
+	@Override
+	public List<LprodVO> getlprodList() throws SQLException {
+		
+		return client.queryForList("prod.lprodList");
+	}
+
+	@Override
+	public String insertProd(ProdVO prodInfo) throws SQLException {
+		
+		return (String) client.insert("prod.insertprod", prodInfo);
+	}
+
+	@Override
+	public String getprodid(String prodid) throws SQLException {
+		
+		return (String) client.queryForObject("prod.getprodid", prodid);
 	}
 
 }

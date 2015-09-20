@@ -133,7 +133,7 @@ td {text-align: left; }
 			<input type="button" value="상품수정"/>
 			<input type="reset" value="취소"/>
 			<input type="button" value="상품삭제"/>
-			<input type="button" value="상품목록"/>
+			<input type="button" value="상품목록" onclick="javascript:location.href='<%=request.getContextPath()%>/06/main.jsp?contentPage=/09/prodList.jsp'"/>
 		</td>
 	</tr>
 </table>

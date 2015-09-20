@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.Map;
 
 import vo.BuyerVO;
+import vo.LprodVO;
 import vo.MemberVO;
+import vo.ProdVO;
 
 public interface IMemberDao {
 	public MemberVO getMemberInfo(Map<String, String> params) throws SQLException;
@@ -20,5 +22,12 @@ public interface IMemberDao {
 	public int updateBuyerInfo(BuyerVO buyerinfo) throws SQLException;
 	public String insertBuyer(BuyerVO buyerinfo) throws SQLException;
 	public int deleteBuyer(String buyer_id) throws SQLException;
+	
+	public List<ProdVO> getprodList() throws SQLException;
+	public List<LprodVO> getlprodList() throws SQLException;
+	
+	public String insertProd(ProdVO prodInfo) throws SQLException;
+	
+	public String getprodid(String prodid) throws SQLException;
 
 }

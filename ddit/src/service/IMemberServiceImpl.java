@@ -10,7 +10,9 @@ import dao.IMemberDao;
 import dao.IMemberDaoImpl;
 
 import vo.BuyerVO;
+import vo.LprodVO;
 import vo.MemberVO;
+import vo.ProdVO;
 
 public class IMemberServiceImpl implements IMemberService {
 	
@@ -139,6 +141,50 @@ public class IMemberServiceImpl implements IMemberService {
 			e.printStackTrace();
 		}
 		return deleteCnt;
+	}
+
+	@Override
+	public List<ProdVO> getprodList() {
+		List<ProdVO> prodList = null;
+		try {
+			prodList = dao.getprodList();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return prodList;
+	}
+
+	@Override
+	public List<LprodVO> getlprodList() {
+		List<LprodVO> lprodList = null;
+		try {
+			lprodList = dao.getlprodList();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return lprodList;
+	}
+
+	@Override
+	public String insertProd(ProdVO prodInfo) {
+		String prodname = "";
+		try {
+			prodname = dao.insertProd(prodInfo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return prodname;
+	}
+
+	@Override
+	public String getprodid(String prodid) {
+		String prod_id = "";
+			try {
+				prod_id = dao.getprodid(prodid);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		return prod_id;
 	}
 
 }
