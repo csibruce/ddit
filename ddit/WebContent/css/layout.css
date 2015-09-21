@@ -12,7 +12,7 @@ a:hover,a:active,a:focus{text-decoration:underline}
 #header{width:800px; text-align: right;}
 #container{width:800px;}
 #container:after{display:block;clear:both;content:''}
-#content{float:right;width:600px; height: auto; background-color: white; margin-top: 10px;}
+#content{float:right;width:600px; height: 500px; background-color: white; margin-top: 10px;}
 #footer{width:800px}
 .left{float:left;width:200px; height: 300px; background-color: darkgray; margin-top: 10px;}
 .left .leftmenu li {position:relative; list-style:none; text-align:left; width:100px; padding-bottom:5px; margin-top: 10px; background: orange; font-family:'돋움',Dotum,AppleGothic,sans-serif;font-size:12px;}
@@ -72,10 +72,9 @@ a:hover,a:active,a:focus{text-decoration:underline}
 	background:
 		url(http://html.nhndesign.com/guidelines/uio/img/menu/bg_tab_left.gif)
 		0 0 no-repeat;
-	color: white;
+	color: #666;
 	line-height: 14px;
-	text-decoration: none;
-	font-weight: bold;
+	text-decoration: none
 }
 
 .tab_menu li a:hover {
@@ -95,15 +94,15 @@ a:hover,a:active,a:focus{text-decoration:underline}
 /* //MENU UI Object */
 
 /* loing box */
-#login h3 img {margin-top: 50px;}
-#login .loginbox {height:90px; margin-top:10px; position:relative; padding:10px 30px 24px 19px; margin-bottom:10px;}
+#login {background:url(../images/membership/bg_login.jpg) no-repeat; width:391px; height:246px; padding:44px 44px 56px 255px;}
+#login .loginbox {background:url(../images/membership/bg_loginbox.gif) repeat-x; height:90px; margin-top:21px; position:relative; padding:27px 18px 24px 19px; margin-bottom:10px;}
 #login .loginbox input {width:163px;}
-#login .loginbox .id {position:absolute; left:100px; top:27px;}
-#login .loginbox .id #mem_id {position:absolute; top: 3px; }
-#login .loginbox .pass {position:absolute; left:100px; top:55px;}
-#login .loginbox .pass #mem_pass {position:absolute; top: 3px; }
-#login .loginbox .btn {position:absolute; left:370px; top:27px;}
-#login .loginbox .other {position:absolute; left:225px; top:91px; width:250px;}
+#login .loginbox .id {position:absolute; left:19px; top:27px;}
+#login .loginbox .pass {position:absolute; left:19px; top:55px;}
+#login .loginbox .btn {position:absolute; left:280px; top:27px;}
+#login .loginbox .check {position:absolute; left:19px; top:91px;}
+#login .loginbox .check input {width:auto; border:none; vertical-align:bottom;}
+#login .loginbox .other {position:absolute; left:132px; top:91px; width:250px;}
 
 /* loing box */
 #login-box { color: #ebebeb; font: 12px Arial, Helvetica, sans-serif; background: url(../images/login-box-backg.png) no-repeat left top;}
@@ -126,7 +125,6 @@ a:hover,a:active,a:focus{text-decoration:underline}
 /* //UI Object */
 
 /* form UI Object */
-
 .form_table{margin-left: 7px; font-size:12px;font-family:Tahoma, Geneva, sans-serif}
 .form_table input,
 .form_table textarea,
@@ -157,22 +155,4 @@ a:hover,a:active,a:focus{text-decoration:underline}
 .form_table .item label{float: left; margin:0 10px 0 0; margin-top: 5px;}
 .button_set{float:right; margin-top: 10px; padding: 10px;}
 /* // form UI Object */
-
-/* 아이디/비번찾기 */
-#find .title { margin-bottom:40px; }
-#find .title img {width: 100%;}
-#find .idpass {clear:both; overflow:hidden;}
-#find .idpass h3 {float:left; display:inline;}
-#find .idpass .id {float:right; width:470px; position:relative; border:7px #efefef solid; text-align: left; padding-left: 20px; height: 70px;}
-#find .idpass .id .name {height:30px; overflow:hidden;}
-#find .idpass .id .name input {width:217px; margin-left: 5px;}
-#find .idpass .id .rrn input {width:97px; margin-left: 5px;}
-#find .idpass .id .btn {position:absolute; left:381px; top: 5px;}
-
-#find .idpass .pass {float:right; width:470px; position:relative; border:7px #efefef solid; margin-top: 10px;  text-align: left; padding-left: 20px; height: 100px;}
-#find .idpass .pass .name {height: 30px; overflow:hidden;}
-#find .idpass .pass .name input {width:217px; margin-left: 10px;}
-#find .idpass .pass .email input {width:217px; margin-left: 5px;}
-#find .idpass .pass .rrn input {width:97px; margin-left: 5px;}
-#find .idpass .pass .btn {position:absolute; left:381px; top:20px;}
 

@@ -1,0 +1,9 @@
+사용자 정의 Tag Library작성
+규칙.
+	1. tag library로 작성될 대상 클래스의 대상 메서드는
+	    반드시 public static으로 선언되어야 함.
+	2. 대상 메서드의 파라메터와 반환타입은 반드시 클래스 타입으로
+		선언 되어야 합니다.
+			public static Float testFunc(Integer x, Integer y){}
+	3. 사용자 정의 태그는 확장자 *.tld로 작성되어 활용됨.
+	4. 작성된 tld 파일은 WEB_INF에 import			
