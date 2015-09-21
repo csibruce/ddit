@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="board">
+
+	<select id="getboardlist" resultClass="vo.BoardVO">
+	
+	select * from board order by bo_no desc
+	
+	</select>
+	
+	<insert id="insertboardinfo" parameterClass="vo.BoardVO">	
+	<selectKey keyProperty="BO_NO">
+		select board_seq.nextval from dual
+	</selectKey>
+		INSERT INTO BOARD(
+						BO_NO
+						,BO_TITLE
+						,BO_WRITER
+						,BO_NICKNAME
+						,BO_PWD
+						,BO_MAIL
+						,BO_IP
+						,BO_CONTENT
+						,BO_HIT
+						,BO_REG_DATE
+						,BO_STATUS
+						,BO_GROUP
+						,BO_SEQ
+						,BO_DEPTH
+					)
+					VALUES(
+						#BO_NO#
+						,#BO_TITLE#
+						,#BO_WRITER#
+						,#BO_NICKNAME#
+						,#BO_PWD#
+						,#BO_MAIL#
+						,#BO_IP#
+						,#BO_CONTENT#
+						,0
+						,sysdate
+						,'y'
+						,#BO_NO#
+						,0
+						,0
+						
+					)
+				<selectKey resultClass="string">
+					select bo_writer from board where bo_no = 1
+				</selectKey>
+	</insert>
+	
+
+
+</sqlMap>

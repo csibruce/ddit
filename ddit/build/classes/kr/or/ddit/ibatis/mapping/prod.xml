@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="prod">
+
+	<typeAlias alias="prodvo" type="vo.ProdVO"/>
+	<select id="prodList" resultClass="prodvo">
+		select * from prod
+	</select>
+	<select id="lprodList" resultClass="vo.LprodVO">
+		select * from lprod
+	</select>
+    <insert id="insertprod">
+    	insert into prod(
+    			 PROD_ID
+				 ,PROD_NAME
+				 ,PROD_LGU
+				 ,PROD_BUYER
+				 ,PROD_COST
+				 ,PROD_PRICE
+				 ,PROD_SALE
+				 ,PROD_OUTLINE
+				 ,PROD_DETAIL
+				 ,PROD_TOTALSTOCK
+				 ,PROD_INSDATE
+				 ,PROD_PROPERSTOCK
+				 ,PROD_SIZE
+				 ,PROD_COLOR
+				 ,PROD_DELIVERY
+				 ,PROD_UNIT
+				 ,PROD_QTYIN
+				 ,PROD_QTYSALE
+				 ,PROD_MILEAGE  			
+    			)
+				values(
+				 #PROD_ID#
+				 ,#PROD_NAME#
+				 ,#PROD_LGU#
+				 ,#PROD_BUYER#
+				 ,#PROD_COST#
+				 ,#PROD_PRICE#
+				 ,#PROD_SALE#
+				 ,#PROD_OUTLINE#
+				 ,#PROD_DETAIL#
+				 ,#PROD_TOTALSTOCK#
+				 ,#PROD_INSDATE#
+				 ,#PROD_PROPERSTOCK#
+				 ,#PROD_SIZE#
+				 ,#PROD_COLOR#
+				 ,#PROD_DELIVERY#
+				 ,#PROD_UNIT#
+				 ,#PROD_QTYIN#
+				 ,#PROD_QTYSALE#
+				 ,#PROD_MILEAGE#		
+				) 
+				<selectKey>
+				select prod_name from prod
+				where #prod_id#
+				</selectKey>   	
+    	
+    </insert>
+    
+    <select id="getprodid" parameterClass="string" resultClass="string">
+    	select max(prod_id) from prod where prod_lgu = #prodid#
+    </select>
+    
+    
+</sqlMap>
