@@ -5,9 +5,36 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+
+	function checkform(get){
+		
+		//bo_title
+		//bo_nickname
+		//bo_pwd
+		//bo_content
+		//bo_mail
+		alert("function :  checkfrom(onsubmit)");
+		var title = $('input[name=bo_title]').val();
+		var nickname = $('input[name=bo_nickname]').val();
+		var pwd = $('input[name=bo_pwd]').val();
+		var content = $('input[name=bo_content]').val();
+		var mail = $('input[name=bo_mail]').val();
+		
+		if(!title){alert("제목을 입력해 주세요!");  return false;}
+		if(!nickname){alert("대화명을 입력해 주세요!"); return false;}
+		if(!pwd){alert("비밀번호를 입력해 주세요!"); return false;}
+		if(!content){alert("내용을 입력해 주세요!"); return false;}
+		if(!mail){alert("메일주소를 입력해 주세요!"); return false;}
+		
+		return return;
+		
+	}
+
+</script>
 </head>
 <body>
-<form method="post" name="boardForm" method="post">
+<form name="boardForm" method="post" action="<%=request.getContextPath()%>/13/insertboardinfo.jsp" onsubmit="return checkform(this)">
 	<fieldset>
 		<div class="form_table">
 			<table border="1" cellspacing="0" summary="게시판 작성.">
@@ -16,7 +43,7 @@
 						<th scope="row">제 목</th>
 						<td>
 							<div class="item">
-								<input class="i_text" title="제목" type="text">
+								<input class="i_text" name="bo_title" title="제목" type="text">
 							</div>
 						</td>
 					</tr>
@@ -24,7 +51,7 @@
 						<th scope="row">작성자 대화명</th>
 						<td>
 							<div class="item">
-								<input class="i_text" title="작성자대화명" type="text">
+								<input class="i_text" name="bo_nickname" title="작성자대화명" type="text">
 							</div>
 						</td>
 					</tr>
@@ -32,7 +59,7 @@
 						<th scope="row">패스워드</th>
 						<td>
 							<div class="item">
-								<input class="i_text" title="패스워드" type="password">
+								<input class="i_text" name="bo_pwd" title="패스워드" type="password">
 							</div>
 						</td>
 					</tr>
@@ -40,7 +67,7 @@
 						<th scope="row">이메일</th>
 						<td>
 							<div class="item">
-								<input class="i_text" title="이메일" type="text" name="bo_mail">
+								<input class="i_text" name="bo_mail" title="이메일" type="text" name="bo_mail">
 							</div>
 						</td>
 					</tr>
@@ -48,7 +75,7 @@
 						<th scope="row">내용</th>
 						<td>
 							<div class="item">
-								<textarea id="temp_textarea" class="i_text" cols="50" rows="12"></textarea>
+								<textarea id="temp_textarea" name="bo_content" class="i_text" cols="50" rows="12"></textarea>
 							</div>
 						</td>
 					</tr>
@@ -68,9 +95,9 @@
 		</div>
 	</fieldset>
 	<div class="button_set">
-		<input type="button" value="등록"/>
+		<input type="submit" value="등록"/>
 		<input type="reset" value="취소"/>
-		<input type="button" value="목록"/>
+		<input type="button" value="목록"  onclick="javasctipt:location.href='<%=request.getContextPath()%>/06/main.jsp?contentPage=/13/boardList.jsp'"/>
 	</div>
 </form>
 </body>

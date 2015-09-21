@@ -5,9 +5,9 @@
 			  auth="bagrant" 
 			  type="javax.sql.DataSource"
 			  driverClassName="oracle.jdbc.driver.OracleDriver"
-			  url="jdbc:oracle:thin:@localhost:1521:XE"
-			  username="pc16"
-			  password="java"
+			  url="jdbc:oracle:thin:@bruce-pc:1522:orcl"
+			  username="oraclass"
+			  password="JAVA"
 			  maxActive="10"
 			  maxWait="-1">
 	</Resource>

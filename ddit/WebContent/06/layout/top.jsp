@@ -17,7 +17,7 @@
 		<li><a href="<%=request.getContextPath()%>/06/main.jsp">회원리스트</a></li>
 		<li><a href="<%=request.getContextPath()%>/06/main.jsp?contentPage=/07/buyerList.jsp">거래처</a></li>
 		<li><a href="<%=request.getContextPath()%>/06/main.jsp?contentPage=/09/prodList.jsp">상품</a></li>
-		<li><a href="#">메뉴5</a></li>
+		<li><a href="<%=request.getContextPath()%>/06/main.jsp?contentPage=/13/boardList.jsp">게시판</a></li>
 		<li><a href="#">메뉴6</a></li>
 		<li><a href="#">메뉴7</a></li>
 		<li><a href="#">메뉴8</a></li>

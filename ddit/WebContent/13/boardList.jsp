@@ -1,5 +1,16 @@
+<%@page import="vo.BoardVO"%>
+<%@page import="java.util.List"%>
+<%@page import="service.BoardServiceImpl"%>
+<%@page import="service.BoardService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<%
+	BoardService service = BoardServiceImpl.getInstance();
+	List<BoardVO> boardlist = service.getboardlist();
+
+%>	
+	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -25,6 +36,15 @@
 			</tr>
 		</thead>
 		<tbody>
+		<% for(BoardVO bvo :boardlist){ %>
+			<tr>
+				<td><%=bvo.getBO_NO() %></td>
+				<td><%=bvo.getBO_TITLE() %></td>
+				<td><%=bvo.getBO_NICKNAME() %></td>
+				<td><%=bvo.getBO_REG_DATE() %></td>
+				<td><%=bvo.getBO_HIT() %></td>
+			</tr>
+		<% }%>	
 		</tbody>
 	</table>
 	<div class="searchForm" align="right" style="margin-top: 10px;">
@@ -36,7 +56,7 @@
 			</select>
 			<input type="text" id="search_keyword" name="search_keyword">
 			<input type="submit" value="검색">
-			<input type = "button" value="글쓰기"/>
+			<input type = "button" value="글쓰기" onclick="javasctipt:location.href='<%=request.getContextPath()%>/06/main.jsp?contentPage=/13/boardForm.jsp'"/>
 		</form>
 	</div>
 </div>
